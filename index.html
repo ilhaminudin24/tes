@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview Prep — MMS Group | Ilham Aminudin</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0f0f;
+    --paper: #faf8f4;
+    --gold: #c9a84c;
+    --gold-light: #f0e2b6;
+    --accent: #1a3a2a;
+    --muted: #6b6460;
+    --line: #e4ddd4;
+    --red: #b84040;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: var(--ink);
+    z-index: 100;
+    display: flex; align-items: center; gap: 0;
+    padding: 0;
+    overflow-x: auto;
+  }
+  nav a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    white-space: nowrap;
+    transition: color .2s, background .2s;
+  }
+  nav a:hover, nav a.active { color: var(--gold); background: rgba(201,168,76,.08); }
+  nav .logo {
+    padding: 14px 20px;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 900;
+    border-right: 1px solid #2a2a2a;
+    flex-shrink: 0;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 100px 60px 60px;
+    background: var(--ink);
+    color: var(--paper);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content:'';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,168,76,.12) 0%, transparent 70%);
+  }
+  .hero-tag {
+    font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 90px);
+    font-weight: 900; line-height: 1.0;
+    margin-bottom: 24px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero p { font-size: 17px; color: #aaa; max-width: 560px; margin-bottom: 48px; }
+  .hero-meta {
+    display: flex; gap: 40px; flex-wrap: wrap;
+  }
+  .hero-meta div { border-left: 2px solid var(--gold); padding-left: 16px; }
+  .hero-meta .label { font-size: 10px; text-transform: uppercase; letter-spacing:.15em; color: #666; }
+  .hero-meta .val { font-size: 15px; font-weight: 600; color: var(--paper); }
+
+  /* SECTIONS */
+  section {
+    padding: 80px 60px;
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 48px;
+  }
+  section:nth-child(even) { background: #f4f1ec; }
+  .sec-label {
+    font-size: 10px; font-weight: 700; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .sec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 48px); font-weight: 900;
+    margin-bottom: 40px; line-height: 1.15;
+  }
+  .sec-title em { color: var(--muted); font-style: normal; }
+
+  /* GRID CARDS */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 28px;
+    position: relative;
+  }
+  .card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--gold);
+  }
+  .card h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+  .card p, .card li { font-size: 14px; color: #444; line-height: 1.65; }
+  .card ul { padding-left: 18px; }
+  .card .icon { font-size: 24px; margin-bottom: 12px; }
+  .card.accent-red::before { background: var(--red); }
+  .card.accent-green::before { background: var(--accent); }
+
+  /* PROFILE CARD */
+  .profile-box {
+    background: var(--accent);
+    color: var(--paper);
+    border-radius: 2px;
+    padding: 36px;
+    display: grid; grid-template-columns: 1fr 2fr; gap: 32px;
+    align-items: start;
+  }
+  .profile-box .avatar {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 42px; font-weight: 900; color: var(--ink);
+    flex-shrink: 0;
+  }
+  .profile-box h2 { font-family: 'Playfair Display', serif; font-size: 26px; margin-bottom: 6px; }
+  .profile-box .role { color: var(--gold); font-size: 13px; font-weight: 600; letter-spacing: .08em; margin-bottom: 16px; }
+  .profile-box p { font-size: 14px; color: rgba(255,255,255,.8); margin-bottom: 12px; }
+  .profile-tip {
+    background: rgba(201,168,76,.15);
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px; border-radius: 0 2px 2px 0;
+    font-size: 13px; color: var(--gold-light);
+    margin-top: 16px;
+  }
+
+  /* Q&A */
+  .qa-item {
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .qa-q {
+    background: var(--ink); color: var(--paper);
+    padding: 18px 24px;
+    font-weight: 600; font-size: 15px; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    user-select: none;
+  }
+  .qa-q:hover { background: #1e1e1e; }
+  .qa-q .badge {
+    font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+    background: var(--gold); color: var(--ink);
+    padding: 3px 10px; border-radius: 20px; font-weight: 700; flex-shrink: 0; margin-left: 12px;
+  }
+  .qa-q .toggle { color: var(--gold); font-size: 18px; flex-shrink: 0; margin-left: 12px; }
+  .qa-a {
+    background: #fff; padding: 0 24px;
+    max-height: 0; overflow: hidden;
+    transition: max-height .35s ease, padding .35s ease;
+    font-size: 14px; color: #333; line-height: 1.75;
+  }
+  .qa-a.open { max-height: 600px; padding: 20px 24px; }
+  .qa-a strong { color: var(--accent); }
+  .qa-a .sample {
+    background: var(--gold-light);
+    border-left: 3px solid var(--gold);
+    padding: 14px 16px; margin-top: 14px;
+    border-radius: 0 2px 2px 0;
+    font-style: italic; color: #555; font-size: 13.5px;
+  }
+
+  /* INTRO SCRIPT */
+  .script-box {
+    background: var(--ink); color: var(--paper);
+    border-radius: 2px; padding: 40px;
+    position: relative; overflow: hidden;
+  }
+  .script-box::before {
+    content: '"';
+    position: absolute; top: -20px; left: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 200px; color: rgba(201,168,76,.1); line-height: 1;
+  }
+  .script-box p { font-size: 16px; line-height: 1.9; margin-bottom: 16px; position: relative; z-index: 1; }
+  .script-box p:last-child { margin-bottom: 0; }
+  .script-box .highlight { color: var(--gold); font-weight: 600; }
+  .script-box .pause { color: #555; font-size: 13px; font-style: italic; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14px;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist .check {
+    width: 22px; height: 22px; border: 2px solid var(--gold);
+    border-radius: 3px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background .2s;
+  }
+  .checklist .check.done { background: var(--gold); color: var(--ink); font-weight: 900; }
+
+  /* PILLARS */
+  .pillar-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .pillar {
+    background: var(--ink); color: var(--paper);
+    padding: 32px 24px; border-radius: 2px; text-align: center;
+  }
+  .pillar .pnum { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+  .pillar h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .pillar p { font-size: 13px; color: #aaa; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 30px; }
+  .timeline::before { content:''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--line); }
+  .tl-item { position: relative; margin-bottom: 32px; }
+  .tl-dot {
+    position: absolute; left: -26px; top: 4px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--gold); border: 3px solid var(--paper);
+  }
+  .tl-date { font-size: 11px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 4px; }
+  .tl-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+  .tl-sub { font-size: 13px; color: var(--muted); }
+
+  /* STAR TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { background: var(--ink); color: var(--gold); padding: 12px 16px; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
+  td { padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(0,0,0,.02); }
+  td strong { color: var(--accent); }
+
+  /* RESPONSIVE */
+  @media(max-width:700px) {
+    section { padding: 60px 24px; }
+    .hero { padding: 80px 24px 50px; }
+    .profile-box { grid-template-columns: 1fr; }
+    .pillar-row { grid-template-columns: 1fr; }
+  }
+
+  /* GLOSSARY TOOLTIP SYSTEM */
+  .term {
+    border-bottom: 1.5px dashed var(--gold);
+    cursor: help;
+    color: inherit;
+    position: relative;
+    display: inline;
+  }
+  .term::after {
+    content: ' ⓘ';
+    font-size: 10px;
+    color: var(--gold);
+    vertical-align: super;
+  }
+  .tooltip-popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    background: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    padding: 14px 18px;
+    max-width: 320px;
+    font-size: 13px;
+    line-height: 1.6;
+    box-shadow: 0 8px 32px rgba(0,0,0,.4);
+    pointer-events: none;
+  }
+  .tooltip-popup.visible { display: block; }
+  .tooltip-popup .tt-title {
+    font-weight: 700;
+    color: var(--gold);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 6px;
+  }
+  .tooltip-popup .tt-body { color: #ccc; }
+
+  /* INTRO ENRICHED */
+  .intro-stat-row {
+    display: flex; gap: 16px; flex-wrap: wrap; margin: 20px 0;
+  }
+  .intro-stat {
+    background: rgba(201,168,76,.12);
+    border: 1px solid rgba(201,168,76,.3);
+    border-radius: 3px;
+    padding: 10px 16px;
+    text-align: center;
+  }
+  .intro-stat .n { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--gold); font-weight: 900; }
+  .intro-stat .l { font-size: 11px; color: #aaa; text-transform: uppercase; letter-spacing: .08em; margin-top: 2px; }
+  .note-box {
+    background: rgba(201,168,76,.08);
+    border-left: 3px solid var(--gold);
+    padding: 10px 14px;
+    border-radius: 0 3px 3px 0;
+    font-size: 12.5px;
+    color: var(--gold-light);
+    margin-top: 10px;
+    font-style: italic;
+  }
+</style>
+
+<!-- Tooltip popup element -->
+<div class="tooltip-popup" id="ttPopup">
+  <div class="tt-title" id="ttTitle"></div>
+  <div class="tt-body" id="ttBody"></div>
+</div>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Interview Prep</div>
+  <a href="#hero">Home</a>
+  <a href="#company">Company</a>
+  <a href="#interviewer">Interviewer</a>
+  <a href="#intro">Introduction</a>
+  <a href="#qa">Q&A</a>
+  <a href="#star">STAR Stories</a>
+  <a href="#checklist">Checklist</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-tag">📋 Interview Preparation Deck</div>
+  <h1>MMS Group<br><span>Indonesia</span><br>Interview</h1>
+  <p>Business Process Analyst Senior Specialist — Persiapan komprehensif untuk user interview dengan Bu Viona Rosalin Priscilla</p>
+  <div class="hero-meta">
+    <div><div class="label">Posisi</div><div class="val">BP Analyst Senior Specialist</div></div>
+    <div><div class="label">Interviewer</div><div class="val">Viona Rosalin Priscilla</div></div>
+    <div><div class="label">Tipe</div><div class="val">User Interview (Offline)</div></div>
+    <div><div class="label">Tanggal</div><div class="val">Besok 🔥</div></div>
+  </div>
+</section>
+
+<!-- COMPANY PROFILE -->
+<section id="company">
+  <div class="sec-label">01 — Company Deep Dive</div>
+  <div class="sec-title">Kenali MMS Group<br><em>Indonesia (MMSGI)</em></div>
+
+  <div class="pillar-row" style="margin-bottom:32px;">
+    <div class="pillar">
+      <div class="pnum">①</div>
+      <h3>MMS Resources</h3>
+      <p>Mining & energy management — fokus bisnis batu bara. Flagship asset: PT Multi Harapan Utama (IUPK, Kalimantan Timur)</p>
+    </div>
+    <div class="pillar">
+      <div class="pnum">②</div>
+      <h3>MMS Land</h3>
+      <p>Property & hospitality — residential property dan data center business</p>
+    </div>
+    <div class="pillar">
+      <div class="pnum">③</div>
+      <h3>MMS Solution</h3>
+      <p>Sustainable future — green energy & food industry. Ini adalah pilar diversifikasi terbaru</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="icon">🏢</div>
+      <h3>Quick Facts</h3>
+      <ul>
+        <li>Berdiri sejak <strong>2005</strong>, 100% domestic investment</li>
+        <li>Kantor pusat: <strong>TCC Batavia Tower One Lt. 43</strong>, Jakarta (Tanah Abang)</li>
+        <li>~500–1,000 karyawan</li>
+        <li>Annual revenue ~<strong>$39.9 juta USD</strong> (2025)</li>
+        <li>COO: Tedy Harjanto</li>
+        <li>Sedang dalam transformasi ke <strong>sustainable energy company</strong></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="icon">🌱</div>
+      <h3>Nilai & Kultur (MMSGI Values)</h3>
+      <ul>
+        <li><strong>M</strong>odernity — inovasi & teknologi</li>
+        <li><strong>M</strong>eaningfulness — dampak nyata</li>
+        <li><strong>S</strong>ynergy — kolaborasi lintas unit</li>
+        <li><strong>G</strong>oal-Orientedness — KPI driven</li>
+        <li><strong>I</strong>ntegrity — governance & compliance</li>
+      </ul>
+      <div style="margin-top:12px; padding:10px; background:var(--gold-light); font-size:13px; border-radius:2px;">
+        💡 Sebutkan nilai-nilai ini saat menjawab pertanyaan tentang culture fit — tunjukkan alignment dengan kerjaanmu di IKEA
+      </div>
+    </div>
+    <div class="card">
+      <div class="icon">📈</div>
+      <h3>Konteks Strategis</h3>
+      <ul>
+        <li>MMSGI sedang <strong>diversifikasi dari coal ke green energy</strong> — bisnis process digitalization menjadi kritis untuk efisiensi di semua pilar</li>
+        <li>Punya komitmen ESG kuat — sustainability report dipublikasikan tahunan</li>
+        <li>Berarti role BP Analyst di sini bukan sekadar dokumen SOP, tapi akan menyentuh <strong>transformasi bisnis</strong></li>
+      </ul>
+    </div>
+    <div class="card accent-green">
+      <div class="icon">🎯</div>
+      <h3>Kenapa Role Ini Penting Sekarang?</h3>
+      <ul>
+        <li>Perusahaan energi yang diversifikasi perlu <strong>standarisasi proses</strong> antar sub-holding</li>
+        <li>Digitalization dept. masih terbilang baru → kamu masuk di <strong>fase pembangunan</strong></li>
+        <li>Ada kebutuhan bridge antara mining ops (tradisional) dengan digitalized future business</li>
+        <li>Ini kesempatan besar untuk <strong>shape the function</strong>, bukan sekadar mengisi posisi</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- INTERVIEWER PROFILE -->
+<section id="interviewer">
+  <div class="sec-label">02 — Know Your Interviewer</div>
+  <div class="sec-title">Ibu Viona Rosalin<br><em>Priscilla</em></div>
+
+  <div class="profile-box" style="margin-bottom:32px;">
+    <div>
+      <div class="avatar">V</div>
+    </div>
+    <div>
+      <h2>Viona Rosalin Priscilla</h2>
+      <div class="role">Business Process & Digitalization Department Head — MMS Group Indonesia</div>
+      <p>Seorang practitioner BP yang sangat experienced — background lintas industri dari finance, healthcare, hingga retail. Holds a <strong>Master's degree</strong> dan <strong>ISO 9001 Foundation</strong> certification.</p>
+      <div class="profile-tip">
+        💡 <strong>Penting:</strong> Beliau adalah BP puritan. Ia akan sangat menghargai kemampuan analitis & methodological rigor. Jangan hanya cerita tentang "apa yang dilakukan" — selalu sertakan <em>bagaimana kamu menganalisisnya</em> dan <em>impact-nya</em>.
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>📍 Background Karir</h3>
+      <div class="timeline" style="margin-top:12px;">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-date">Terbaru</div>
+          <div class="tl-title">BP & Digitalization Dept. Head</div>
+          <div class="tl-sub">MMS Group Indonesia</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-title">Onboarding & Process Improvement Head</div>
+          <div class="tl-sub">Good Doctor Technology</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-title">Jr. Manager, Service & Quality Excellence</div>
+          <div class="tl-sub">AXA Indonesia (Finance)</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-title">Deputy Manager, BPI</div>
+          <div class="tl-sub">Thamrin Group</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-title">Supervisor, BPI</div>
+          <div class="tl-sub">PT Radana Bhaskara Finance</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-title">Quality Assurance</div>
+          <div class="tl-sub">PT Biocert Indonesia (ISO 17065)</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>🧠 Mindset & Kepakaran</h3>
+      <ul style="margin-top:10px;">
+        <li style="margin-bottom:8px;">Sangat paham <strong>Quality Management System</strong> (ISO 9001, ISO 17065)</li>
+        <li style="margin-bottom:8px;">Experience di <strong>fintech, healthcare, retail, energy</strong> → menghargai konteks industri</li>
+        <li style="margin-bottom:8px;">Pernah handle onboarding di healthtech → <strong>user-centric process thinking</strong></li>
+        <li style="margin-bottom:8px;">Self-described sebagai <em>"Business Process and Improvement Enthusiast"</em> → passion bukan sekadar job</li>
+        <li>Latar belakang audit & compliance → akan tanya soal <strong>governance & data accuracy</strong></li>
+      </ul>
+    </div>
+    <div class="card accent-red">
+      <h3>⚡ Cara Memenangkan Hatinya</h3>
+      <ul style="margin-top:10px;">
+        <li style="margin-bottom:8px;">Bicara dalam <strong>angka & impact</strong> (kamu punya banyak: IDR 3.5B, 50% vendor hour cut, $44K savings)</li>
+        <li style="margin-bottom:8px;">Tunjukkan kamu paham <strong>root cause analysis methodology</strong> — bukan cuma symptom</li>
+        <li style="margin-bottom:8px;">Hubungkan pengalaman IKEA dengan <strong>kebutuhan spesifik MMSGI</strong> (diversifikasi, cross-pillar ops)</li>
+        <li style="margin-bottom:8px;">Tunjukkan curiosity tentang bisnis beliau — <strong>tanyakan pertanyaan cerdas</strong> di akhir</li>
+        <li>Jangan basa-basi — be direct, structured, confident</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- INTRODUCTION SCRIPT -->
+<section id="intro">
+  <div class="sec-label">03 — Self Introduction</div>
+  <div class="sec-title">Sample Perkenalan<br><em>Diri (2–3 menit)</em></div>
+
+  <div style="margin-bottom:24px;" class="grid-2">
+    <div class="card">
+      <h3>🎯 Struktur Ideal</h3>
+      <ul>
+        <li style="margin-bottom:6px;"><strong>Hook</strong> — Satu kalimat positioning yang kuat</li>
+        <li style="margin-bottom:6px;"><strong>Journey</strong> — Narasi karir yang logis & berkembang</li>
+        <li style="margin-bottom:6px;"><strong>Proof</strong> — 2–3 achievement konkret dengan angka</li>
+        <li style="margin-bottom:6px;"><strong>Why Here</strong> — Koneksi spesifik ke MMSGI & role ini</li>
+        <li><strong>Forward</strong> — Apa yang ingin kamu kontribusikan</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>⚠️ Hindari</h3>
+      <ul>
+        <li style="margin-bottom:6px;">Membaca ulang CV secara linear</li>
+        <li style="margin-bottom:6px;">Terlalu banyak cerita personal (keluarga, hobi)</li>
+        <li style="margin-bottom:6px;">Tidak ada angka/bukti konkret</li>
+        <li style="margin-bottom:6px;">Menyebut "saya suka tantangan" tanpa contoh</li>
+        <li>Lupa menyebut kenapa MMSGI/role ini spesifik</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Stats bar from website -->
+  <div class="intro-stat-row" style="margin-bottom:28px;">
+    <div class="intro-stat"><div class="n">IDR 3.5B+</div><div class="l">Total Cost Savings</div></div>
+    <div class="intro-stat"><div class="n">26+</div><div class="l">Strategic Projects Led</div></div>
+    <div class="intro-stat"><div class="n">100%</div><div class="l">Project Delivery Rate</div></div>
+    <div class="intro-stat"><div class="n">7x</div><div class="l">Innovation Target Exceeded</div></div>
+    <div class="intro-stat"><div class="n">5+</div><div class="l">Tahun Pengalaman</div></div>
+  </div>
+  <div class="note-box" style="margin-bottom:28px;">💡 <strong>Cara Pakai Script Ini:</strong> Jangan dihafal kata per kata. Pahami <em>struktur & angkanya</em>, lalu sampaikan dengan natural. Angka-angka ini semua ada di CV dan website kamu — sudah terbukti, tinggal disampaikan dengan keyakinan.</div>
+
+  <div class="script-box">
+    <p><span class="pause">[ Hook — confident, satu napas ]</span></p>
+    <p>"Nama saya <span class="highlight">Ilham Aminudin</span>. Selama lebih dari 5 tahun, fokus saya konsisten: saya bukan hanya menganalisis proses bisnis — saya <span class="highlight">mengeksekusi perbaikannya</span>, mengukur dampaknya, dan memastikan hasilnya terasa secara finansial."</p>
+    <div class="note-box">📝 <strong>Kenapa Hook ini kuat:</strong> Langsung membedakan kamu dari kandidat yang hanya "analisis". Kamu menyebut <em>eksekusi + dampak finansial</em> — dua hal yang sangat relevan untuk Bu Viona yang background-nya BP practitioner.</div>
+
+    <p><span class="pause">[ Journey — narasi yang naik level ]</span></p>
+    <p>"Karir saya dimulai sebagai <span class="highlight">System Analyst</span> di PT Indoglobal Nusa Persada, di mana saya belajar menerjemahkan kebutuhan bisnis yang kompleks — mulai dari modul akademik, finance, hingga admission — menjadi alur teknis yang terstruktur. Pengalaman itu membuat saya sadar bahwa <span class="highlight">gap antara bisnis dan teknologi</span> adalah masalah proses, bukan hanya masalah kode.</p>
+    <p>Saya kemudian bergabung dengan <span class="highlight">IKEA Indonesia</span>, dan perjalanan saya di sana merepresentasikan evolusi yang cukup lengkap: dari <strong>Business Application Analyst</strong> yang menggali inefisiensi di lapangan, ke <strong>IT Project Manager</strong> yang memimpin compliance rollout dan <span class="term" data-term="multi-vendor management" data-def="Mengelola beberapa vendor/pihak ketiga sekaligus dalam satu proyek. Contoh di IKEA: Ilham koordinasi K3, Bitbox, dan Mulesoft secara bersamaan dalam satu project go-live.">multi-vendor management</span>, hingga saat ini sebagai <strong>Solution Architect</strong> — di mana saya tidak hanya mendesain proses, tapi juga mengeksekusi otomatisasinya sendiri."</p>
+    <div class="note-box">📝 <strong>Kenapa Journey ini lebih kuat dari versi sebelumnya:</strong> Versi lama hanya menyebut "bergabung IKEA dan berkembang". Versi ini menjelaskan <em>logika perkembangan</em> — ada benang merahnya. Ini yang namanya <strong>career narrative</strong>, bukan sekadar daftar posisi.</div>
+
+    <p><span class="pause">[ Proof — layer angka dengan konteks ]</span></p>
+    <p>"Beberapa pencapaian konkret yang bisa saya ceritakan: Saya menghasilkan <span class="highlight">IDR 1.58 Miliar <span class="term" data-term="Cost Avoidance" data-def="Penghematan biaya yang dicapai dengan MENCEGAH pengeluaran terjadi, bukan sekadar memotong biaya yang sudah ada. Contoh: daripada bayar vendor IDR 2M, kita buat solusi internal — maka IDR 2M itu adalah 'cost avoidance'. Berbeda dari 'cost saving' yang artinya sudah terlanjur bayar tapi berhasil dipotong.">cost avoidance</span></span> melalui otomatisasi internal menggunakan <span class="term" data-term="Postman & SQL Automation" data-def="Postman = tools yang biasa dipakai developer untuk testing API, tapi Ilham menggunakannya untuk membuat script otomatis yang menggantikan pekerjaan manual. SQL = bahasa untuk query/olah data di database. Kombinasi ini memungkinkan otomasi tanpa perlu membeli software mahal.">Postman dan SQL</span> — angka ini 106% dari target yang ditetapkan. Saya juga mengidentifikasi peluang <span class="term" data-term="Zero-Cost Innovation" data-def="Inovasi yang tidak membutuhkan biaya tambahan — hanya memanfaatkan resource/tools yang sudah ada atau yang lebih murah. Ini adalah keahlian langka karena kebanyakan orang butuh budget besar untuk berinovasi.">zero-cost innovation</span>: migrasi layanan <span class="term" data-term="OTP (One-Time Password)" data-def="Kode verifikasi sekali pakai yang dikirim ke HP user saat login atau transaksi. Biasanya dikirim via SMS (mahal) atau WhatsApp/email (murah). Ilham berhasil pindahkan dari SMS ke WhatsApp, menghemat biaya per-SMS yang sangat besar untuk volume retail seperti IKEA.">OTP</span> dari SMS ke WhatsApp menghasilkan penghematan <span class="highlight">$44,000 per tahun</span>, dan optimasi arsitektur Load Balancer menambah <span class="highlight">$36,000 per tahun</span> lagi dalam efisiensi infrastruktur."</p>
+    <p>"Di sisi project management, saya memimpin lebih dari <span class="highlight">26 strategic projects</span> dengan <span class="term" data-term="100% On-Time Delivery Rate" data-def="Semua project selesai tepat waktu dan sesuai anggaran. Ini adalah metrik yang sangat tinggi di industri IT — rata-rata industri hanya ~30% project selesai on-time. Artinya Ilham punya disiplin eksekusi yang di atas rata-rata.">100% delivery rate</span> — termasuk <span class="term" data-term="Marketplace Integration Ecosystem" data-def="Sistem yang menghubungkan platform e-commerce (Shopee, TikTok Shop, Tokopedia) dengan sistem internal IKEA, sehingga order dari marketplace langsung terhubung ke proses fulfillment gudang. Ini kompleks karena setiap marketplace punya format data berbeda.">Marketplace Integration</span> untuk Shopee, TikTok, dan Tokopedia, serta <span class="term" data-term="CFU East Establishment" data-def="CFU = Customer Fulfilment Unit. Ini adalah proyek pembukaan unit fulfillment baru IKEA di wilayah Timur Indonesia (kemungkinan Surabaya). Prosesnya melibatkan setup sistem dari nol, koordinasi multi-vendor, dan harus go-live dalam 3 bulan.">CFU East Establishment</span> yang selesai dalam strict timeline 3 bulan. Saya juga memimpin pengurangan <span class="highlight">50% man-hour vendor eksternal</span> dengan menginternalisasi proses <span class="term" data-term="LIT/SIT Testing" data-def="LIT = Load Integration Testing, SIT = System Integration Testing. Keduanya adalah jenis pengujian yang biasanya dilakukan sebelum sistem baru di-launch untuk memastikan semua komponen bekerja bersama dengan baik. Biasanya mahal kalau di-outsource ke vendor.">LIT/SIT testing</span> untuk pembukaan store IKEA Bali dan Surabaya."</p>
+    <div class="note-box">📝 <strong>Kenapa Proof section ini jauh lebih kaya:</strong> Versi lama hanya 3 angka. Versi ini punya <em>6 angka berbeda</em> dengan konteks masing-masing — cost avoidance, zero-cost innovation, dua item savings terpisah, project count, delivery rate. Bu Viona yang BP puritan akan sangat terkesan dengan kejelasan ini.</div>
+
+    <p><span class="pause">[ Differentiator — sebutkan hal yang unik tentang kamu ]</span></p>
+    <p>"Yang membedakan saya dari <span class="term" data-term="Business Process Analyst pada umumnya" data-def="Kebanyakan BP Analyst hanya bisa 'menganalisis' dan membuat dokumentasi/SOP. Mereka tergantung pada tim IT untuk eksekusi teknis. Ilham bisa melakukan keduanya — analisis DAN eksekusi teknis — yang membuatnya bisa bergerak lebih cepat dan tidak bottleneck di mana pun.">BP Analyst pada umumnya</span> adalah saya bisa menjembatani dua dunia: saya berbicara bahasa bisnis dengan manajemen, tapi saya juga bisa langsung turun dan build otomasi-nya sendiri. Kombinasi ini yang membuat saya bisa deliver <span class="highlight">7x melampaui target inovasi</span> dalam satu tahun."</p>
+
+    <p><span class="pause">[ Why MMSGI — tunjukkan kamu riset dan paham konteksnya ]</span></p>
+    <p>"Kenapa saya tertarik ke MMSGI? Saya melihat perusahaan ini sedang dalam momen <span class="term" data-term="Inflection Point" data-def="Titik balik / momen kritis di mana sebuah perusahaan berubah arah secara signifikan. Seperti persimpangan jalan. MMSGI sedang di titik ini: dari pure coal company menuju diversifikasi sustainable energy, property, dan food. Di titik seperti ini, business process yang kuat menjadi sangat kritis.">inflection point</span> yang menarik — dari perusahaan energi berbasis coal, menuju diversifikasi ke green energy, property, dan food industry. Tiga pilar bisnis yang karakteristik operasionalnya sangat berbeda. Di sinilah <span class="highlight">standardisasi dan skalabilitas proses</span> menjadi sangat kritis — karena tanpa fondasi proses yang solid, transformasi ini bisa fragmentasi.</p>
+    <p>Pengalaman saya membangun proses <span class="term" data-term="Omnichannel" data-def="Strategi di mana semua channel penjualan (toko fisik, online marketplace, website) terhubung dan memberikan pengalaman yang konsisten. Ilham membangun ini di IKEA — sistem yang menyatukan order dari Shopee, TikTok, Tokopedia dengan fulfillment gudang fisik IKEA.">omnichannel</span> yang scalable di IKEA — di mana saya harus menyatukan sistem yang berbeda-beda dalam satu <span class="term" data-term="Ekosistem" data-def="Kumpulan sistem, proses, dan tim yang saling terhubung dan bergantung satu sama lain. Seperti ekosistem alam — kalau satu komponen terganggu, komponen lain ikut terdampak. Membangun ekosistem yang sehat adalah salah satu keahlian utama Ilham.">ekosistem</span> — sangat relevan dengan tantangan MMSGI yang perlu menyatukan proses lintas tiga sub-holding."</p>
+    <div class="note-box">📝 <strong>Kenapa Why MMSGI ini lebih kuat:</strong> Versi lama hanya bilang "diversifikasi menarik". Versi ini menjelaskan <em>MENGAPA pengalaman kamu spesifik relevan</em> — ada logical bridge antara omnichannel IKEA dengan multi-pillar MMSGI. Bu Viona akan melihat ini sebagai strategic thinking, bukan sekadar pujian ke perusahaannya.</div>
+
+    <p><span class="pause">[ Close — invite conversation ]</span></p>
+    <p>"Saya percaya kombinasi pengalaman di <span class="highlight">process design, <span class="term" data-term="RCA (Root Cause Analysis)" data-def="Metodologi untuk menemukan AKAR PENYEBAB suatu masalah, bukan hanya gejalanya. Analoginya: kalau tangan kamu luka terus karena meja tajam, RCA bukan tentang plester luka — tapi mencari tahu kenapa mejanya tajam dan bagaimana memperbaikinya.">RCA</span>, dan digitalisasi</span> bisa memberikan kontribusi nyata di sini — baik untuk quick wins maupun untuk transformasi proses jangka panjang. Saya sangat ingin mendengar lebih lanjut tentang tantangan dan prioritas yang sedang dihadapi departemen Business Process & Digitalization di MMSGI."</p>
+  </div>
+
+  <!-- VERSION COMPARISON NOTE -->
+  <div style="margin-top:24px; padding:20px 24px; background:#fff3cd; border:1px solid #ffc107; border-radius:4px;">
+    <strong style="color:#856404;">⚡ Apa yang Berubah dari Versi Sebelumnya?</strong>
+    <ul style="margin-top:10px; font-size:13.5px; color:#533f03; padding-left:20px; line-height:1.9;">
+      <li><strong>Hook diperluas</strong> — tambah kata "mengeksekusi" yang membedakan kamu dari analyst biasa</li>
+      <li><strong>Journey lebih naratif</strong> — ada <em>career narrative logic</em>: dimulai dari "gap bisnis-teknologi adalah masalah proses"</li>
+      <li><strong>Proof 2x lebih kaya</strong> — dari 3 angka menjadi 6 angka: tambah $36K Load Balancer savings, 26+ projects, 7x innovation, 100% delivery rate, store Bali & Surabaya</li>
+      <li><strong>Differentiator ditambahkan</strong> — paragraf baru yang explicitly menyebut keunikan kamu vs BP analyst lain</li>
+      <li><strong>Why MMSGI lebih strategis</strong> — ada logical bridge antara omnichannel IKEA ↔ multi-pillar MMSGI</li>
+      <li><strong>Semua istilah teknis</strong> — punya tooltip penjelasan (hover/klik pada teks bergaris bawah emas)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Q&A SECTION -->
+<section id="qa">
+  <div class="sec-label">04 — Anticipated Questions</div>
+  <div class="sec-title">Pertanyaan yang<br><em>Mungkin Diajukan</em></div>
+
+  <!-- CAT 1: ABOUT YOU -->
+  <h3 style="font-size:13px; text-transform:uppercase; letter-spacing:.15em; color:var(--muted); margin-bottom:16px;">🟡 Tentang Kamu & Pengalaman</h3>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      Ceritakan tentang dirimu dan kenapa kamu apply ke posisi ini.
+      <span class="badge">Pasti Ditanya</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <strong>Gunakan script introduction di atas.</strong> Pastikan kamu menghubungkan ke MMSGI secara spesifik. Jangan hanya recap CV — ceritakan narasi.
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      Apa perbedaan role kamu sebelumnya (IKEA) vs yang kamu lamar sekarang?
+      <span class="badge">Sangat Mungkin</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <strong>Jangan defensive. Frame ini sebagai stepping stone yang logis.</strong>
+      <div class="sample">"Di IKEA saya bekerja dalam ekosistem retail yang sudah mature secara proses. Saya fokus pada improvement dan digitalisasi dalam sistem yang sudah ada. Di MMSGI, saya melihat opportunity yang lebih besar — membangun dan menstandarisasi proses lintas industri (mining, property, green energy) yang memiliki karakteristik berbeda. Ini justru menantang karena membutuhkan tidak hanya execution, tapi juga strategic process design dari awal."</div>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      Kamu dari background IT/Solution Architect. Kenapa mau "turun" ke BP Analyst?
+      <span class="badge">Bisa Ditanya</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <strong>Reframe: ini bukan "turun", ini adalah breadth expansion + domain focus.</strong>
+      <div class="sample">"Justru sebaliknya — saya melihat ini sebagai deepening. Selama menjadi Solution Architect, saya sadar bahwa akar dari semua solusi teknis yang baik adalah pemahaman proses bisnis yang solid. Saya ingin lebih fokus pada business impact dari sudut pandang yang lebih strategis, dan posisi Senior Specialist ini memberi saya platform untuk itu — dengan scope yang lebih luas dan stakeholder yang lebih beragam."</div>
+    </div>
+  </div>
+
+  <!-- CAT 2: COMPETENCY -->
+  <h3 style="font-size:13px; text-transform:uppercase; letter-spacing:.15em; color:var(--muted); margin: 32px 0 16px;">🟢 Kompetensi & Metodologi</h3>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      Bagaimana kamu melakukan root cause analysis? Ceritakan prosesnya.
+      <span class="badge">Pasti Ditanya</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <strong>Jawab dengan framework + contoh nyata.</strong> Bu Viona paham RCA, jadi jangan superficial.
+      <ul style="margin:12px 0; padding-left:20px;">
+        <li>Mulai dari <strong><span class="term" data-term="Symptom Mapping" data-def="Langkah pertama dalam RCA: mengumpulkan semua 'gejala' atau keluhan yang terlihat di permukaan sebelum mulai mencari penyebabnya. Seperti dokter yang mencatat semua keluhan pasien sebelum diagnosis. Tujuannya agar kita tidak tergesa-gesa menyimpulkan — data dulu, baru analisis.">symptom mapping</span></strong> — kumpulkan data, bukan asumsi</li>
+        <li>Gunakan <strong><span class="term" data-term="5 Whys" data-def="Teknik RCA dengan menanyakan 'Kenapa?' sebanyak 5 kali berturut-turut untuk setiap jawaban. Contoh: Mesin rusak → Kenapa? Oli habis → Kenapa? Tidak ada jadwal pengecekan → Kenapa? Tidak ada yang bertanggung jawab → dst. Setiap 'Kenapa' membawa kita lebih dalam ke akar masalah.">5 Whys</span></strong> atau <strong><span class="term" data-term="Fishbone / Ishikawa Diagram" data-def="Diagram berbentuk tulang ikan yang digunakan untuk mengidentifikasi semua kemungkinan penyebab suatu masalah. Kepala ikan = masalah utama. Tulang-tulang = kategori penyebab (misal: People, Process, Technology, Environment). Sangat berguna untuk brainstorming penyebab secara struktural.">Fishbone/Ishikawa</span></strong> untuk trace ke root</li>
+        <li>Validasi temuan dengan <strong>cross-functional stakeholders</strong></li>
+        <li>Susun <span class="term" data-term="Action Plan dengan Impact vs Effort Matrix" data-def="Matrix 2x2 yang membantu prioritasi: sumbu X = effort (usaha yang dibutuhkan), sumbu Y = impact (dampak yang dihasilkan). Prioritas tertinggi: High Impact + Low Effort (Quick Wins). Prioritas terendah: Low Impact + High Effort (hindari). Cara berpikir ini sangat efisien untuk organisasi dengan resource terbatas.">action plan dengan <strong>prioritasi berdasarkan impact vs effort</strong></span></li>
+      </ul>
+      <div class="sample">"Contoh nyata: waktu ada failure pada integrasi e-commerce Tokopedia di IKEA, saya tidak langsung blame sistem. Saya trace dari log transaksi, interview tim fulfillment, dan validasi ke tim IT — ditemukan bahwa root cause-nya adalah <span class="term" data-term="Field Mapping Mismatch" data-def="Ketidakcocokan antara format/nama data yang dikirim sistem A dengan yang diharapkan sistem B. Contoh: IKEA menyebut kolom data sebagai 'product_id', tapi Tokopedia memperbaruinya menjadi 'item_code' tanpa pemberitahuan. Akibatnya data tidak terbaca dan transaksi gagal.">mismatch di field mapping</span> antara sistem IKEA dan API Tokopedia yang diupdate tanpa notifikasi. Setelah itu saya buat monitoring process dan <span class="term" data-term="Change Notification Protocol" data-def="Prosedur formal yang mewajibkan pihak manapun (vendor, partner, internal team) untuk memberi tahu semua pihak terdampak SEBELUM melakukan perubahan pada sistem. Ini mencegah 'silent changes' yang bisa merusak integrasi yang sudah berjalan.">change notification protocol</span> agar tidak terulang."</div>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      Bagaimana kamu membuat process documentation / SOP yang efektif?
+      <span class="badge">Pasti Ditanya</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <strong>Jawab dengan prinsip + tools + user-adoption angle.</strong>
+      <div class="sample">"Saya percaya SOP yang baik harus <strong>actionable, bukan hanya archival</strong>. Prosesnya: (1) interview pelaksana aktual, bukan hanya manajemen, (2) map <span class="term" data-term="As-Is Process" data-def="Proses yang SEDANG berjalan saat ini — sebelum ada perubahan. As-Is = kondisi apa adanya sekarang. Lawannya adalah 'To-Be Process' = kondisi yang diinginkan setelah perbaikan. Mendokumentasikan As-Is dulu sangat penting agar kita tahu dengan tepat apa yang perlu diubah.">as-is process</span> dengan <span class="term" data-term="BPMN (Business Process Model and Notation)" data-def="Standar internasional untuk menggambar diagram proses bisnis menggunakan simbol-simbol terstandarisasi (lingkaran = start/end, kotak = aktivitas, berlian = keputusan, dll). Seperti 'bahasa universal' untuk diagram proses sehingga bisa dipahami oleh semua orang di seluruh dunia.">BPMN</span>/flowchart untuk identifikasi gap, (3) design <span class="term" data-term="To-Be Process" data-def="Proses yang DIINGINKAN setelah perbaikan — kondisi ideal yang menjadi target. Desain To-Be harus mempertimbangkan constraint lapangan (resource, teknologi, SDM) agar bisa benar-benar diimplementasikan, bukan hanya ideal di atas kertas.">to-be</span> dengan mempertimbangkan constraint lapangan, (4) validate dengan <span class="term" data-term="Pilot User" data-def="Sekelompok kecil pengguna yang mencoba proses/SOP baru terlebih dahulu sebelum di-rollout ke semua orang. Tujuannya: menemukan bug atau ketidakjelasan dalam skala kecil sebelum menjadi masalah besar.">pilot user</span> sebelum rollout, (5) training dan monitoring 30 hari pertama. SOP yang tidak dipakai orang tidak ada nilainya — jadi <span class="term" data-term="Adoption Rate sebagai KPI" data-def="Mengukur keberhasilan SOP bukan dari seberapa bagus dokumennya, tapi dari seberapa banyak orang yang benar-benar MENGGUNAKANNYA. Ini adalah mindset yang lebih mature: SOP bukan tujuan, tapi alat. Kalau tidak dipakai, SOP gagal.">adoption adalah KPI utama</span> saya."</div>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      Tools apa yang kamu gunakan untuk process modeling dan tracking KPI?
+      <span class="badge">Sangat Mungkin</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <strong>Sebutkan tools spesifik + konteks penggunaannya.</strong>
+      <div class="sample">"Untuk process modeling saya familiar dengan BPMN tools, Visio, dan Lucidchart. Untuk workflow automation saya gunakan Postman dan SQL scripting. Untuk KPI tracking dan reporting, saya build Power BI dashboards — termasuk untuk LND dan Digital division di IKEA. Untuk project tracking saya pakai Jira. Yang lebih penting dari tools-nya adalah <strong>kemampuan mengartikan data dari tools tersebut</strong> menjadi insight yang actionable untuk manajemen."</div>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      Bagaimana kamu mengukur keberhasilan process improvement?
+      <span class="badge">Sangat Mungkin</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <strong>Jawab dalam 3 dimensi: Efisiensi, Kualitas, Dampak Finansial.</strong>
+      <div class="sample">"Saya selalu define success metrics sebelum project dimulai, bukan setelahnya. Saya gunakan tiga dimensi: (1) <strong>Efisiensi</strong> — <span class="term" data-term="Cycle Time" data-def="Waktu total yang dibutuhkan untuk menyelesaikan satu siklus proses dari awal hingga selesai. Contoh: dari customer pesan di Tokopedia sampai barang diterima = berapa jam? Semakin pendek cycle time, semakin efisien prosesnya.">cycle time</span>, man-hour, error rate; (2) <strong>Kualitas output</strong> — <span class="term" data-term="Compliance Rate" data-def="Persentase proses yang dijalankan sesuai dengan SOP atau regulasi yang berlaku. Compliance rate 100% artinya semua langkah proses selalu diikuti dengan benar. Penting terutama di industri yang heavily regulated seperti finance, healthcare, atau energi.">compliance rate</span>, <span class="term" data-term="SLA (Service Level Agreement)" data-def="Kesepakatan formal tentang standar kualitas layanan yang harus dipenuhi. Misal: 'semua order harus diproses dalam 24 jam'. SLA achievement = persentase target SLA yang berhasil dipenuhi. Biasa dipakai dalam konteks vendor, customer service, atau IT support.">SLA achievement</span>, defect reduction; (3) <strong>Dampak bisnis</strong> — cost saving/avoidance, revenue impact, atau risk mitigation value. Di IKEA, saya konsisten tracking ini dan melaporkannya ke head of division secara regular melalui Power BI."</div>
+    </div>
+  </div>
+
+  <!-- CAT 3: SITUATIONAL -->
+  <h3 style="font-size:13px; text-transform:uppercase; letter-spacing:.15em; color:var(--muted); margin: 32px 0 16px;">🔵 Situasional & Behavioral</h3>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      Ceritakan satu project process improvement yang paling kamu bangga.
+      <span class="badge">Pasti Ditanya</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <strong>Gunakan <span class="term" data-term="STAR Method" data-def="Framework untuk menjawab pertanyaan behavioral interview: Situation (konteks/latar belakang masalah), Task (tugas atau tanggung jawab kamu), Action (langkah konkret yang kamu ambil), Result (hasil yang bisa diukur). Membuat jawaban interview jadi terstruktur dan mudah diikuti oleh interviewer.">STAR Method</span>. Pilih yang punya angka paling kuat.</strong>
+      <div class="sample"><strong>Situation:</strong> IKEA menggunakan OTP via SMS yang biayanya sangat tinggi untuk volume transaksi retail yang besar.<br><br>
+      <strong>Task:</strong> Saya diminta cari solusi untuk reduce cost tanpa menurunkan security atau user experience.<br><br>
+      <strong>Action:</strong> Saya lakukan benchmarking provider, analisis volume vs cost, desain workflow migrasi ke WhatsApp OTP, koordinasi dengan IT dan legal untuk compliance check, lalu rollout bertahap dengan monitoring ketat.<br><br>
+      <strong>Result:</strong> Berhasil menghemat <strong>$44,000 per tahun (±IDR 680 Juta)</strong>, dengan zero complaint dari user side dan SLA tetap terjaga 100%.</div>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      Bagaimana kamu menangani stakeholder yang resistant terhadap perubahan proses?
+      <span class="badge">Sangat Mungkin</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <strong>Tunjukkan empathy + data + co-creation approach.</strong>
+      <div class="sample">"Saya percaya resistensi itu hampir selalu valid — ada alasan di baliknya. Langkah saya: (1) <strong>Listen first</strong> — pahami concern mereka secara tulus, (2) <strong>Data-driven dialogue</strong> — tunjukkan pain yang ada dan proyeksi improvement, (3) <strong>Co-create solution</strong> — libatkan mereka dalam desain, bukan hanya implementasi. Contoh: saat saya menginternalisasi proses testing di IKEA yang sebelumnya di-outsource, ada kekhawatiran tentang kesiapan tim. Saya buat training plan dan period of parallel run sebelum full cutover — akhirnya berhasil dan tim malah bangga bisa handle sendiri."</div>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      Bagaimana kamu mengerjakan banyak proses analysis sekaligus dengan deadline ketat?
+      <span class="badge">Bisa Ditanya</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <strong>Tunjukkan prioritization framework + communication skill.</strong>
+      <div class="sample">"Saya selalu mulai dengan <span class="term" data-term="Impact-Effort Matrix" data-def="Alat prioritasi: semua pekerjaan dibagi ke dalam 4 kuadran berdasarkan Impact (dampak ke bisnis) vs Effort (waktu/resource yang dibutuhkan). Quick Wins = High Impact + Low Effort → kerjakan pertama. Major Projects = High Impact + High Effort → rencanakan dengan baik. Fill-ins = Low Impact + Low Effort → kerjakan kalau ada waktu. Avoid = Low Impact + High Effort → skip atau delegasi."><strong>impact-effort matrix</strong></span> — mana yang high impact dan bisa dikerjakan cepat, mana yang butuh resource lebih. Selanjutnya saya pastikan semua stakeholder kunci aligned soal prioritas ini, karena sering kali urgency berbeda di mata mereka. Di IKEA, saya pernah handle CFU East Establishment (strict 3-month timeline), PII Encryption rollout, dan daily operations bersamaan — kuncinya adalah clear scope, daily check-in singkat, dan berani <span class="term" data-term="Eskalasi (Escalation)" data-def="Proses melaporkan suatu hambatan atau masalah ke level yang lebih tinggi (atasan/manajemen) agar bisa diselesaikan lebih cepat. Eskalasi yang tepat waktu menunjukkan kedewasaan profesional — menandakan kamu proaktif, bukan menandakan kamu tidak bisa handle masalah sendiri.">eskalasi</span> kalau ada blocker."</div>
+    </div>
+  </div>
+
+  <!-- CAT 4: COMPANY-SPECIFIC -->
+  <h3 style="font-size:13px; text-transform:uppercase; letter-spacing:.15em; color:var(--muted); margin: 32px 0 16px;">🔴 Pertanyaan Khusus MMSGI</h3>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      Kamu tahu apa tentang bisnis MMSGI? Kenapa tertarik?
+      <span class="badge">Pasti Ditanya</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <strong>Wajib tahu poin-poin ini:</strong>
+      <ul style="margin:12px 0; padding-left:20px;">
+        <li>3 pilar bisnis: MMS Resources (mining/coal), MMS Land (property + data center), MMS Solution (green energy + food)</li>
+        <li>Berdiri 2005, 100% domestic investment, 20 tahun beroperasi</li>
+        <li>Sedang dalam transformasi ke sustainable energy company</li>
+        <li>Komitmen ESG kuat — terbit sustainability report tahunan</li>
+        <li>Values: Modernity, Meaningfulness, Synergy, Goal-Orientedness, Integrity</li>
+      </ul>
+      <div class="sample">"MMSGI menarik bagi saya karena berada di titik infleksi — dari pure coal energy menuju diversifikasi yang lebih sustainable. Pada transisi seperti ini, biasanya business process yang efisien dan terstandarisasi menjadi enabler utama. Saya excited untuk berkontribusi di fase ini karena saya bisa bawa pengalaman membangun proses scalable dari IKEA — dan menerapkannya di konteks yang lebih complex dan multi-industri."</div>
+    </div>
+  </div>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      Bagaimana kamu akan approach pertama kali masuk ke perusahaan ini?
+      <span class="badge">Sangat Mungkin</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <strong>Tunjukkan 30-60-90 day mindset. Listening dulu, baru action.</strong>
+      <div class="sample">"30 hari pertama saya akan fokus <strong>listen & learn</strong> — understand existing processes, identify key stakeholders di setiap sub-holding, dan petakan pain points yang paling kritis menurut tim. 60 hari, saya mulai prioritasi mana yang bisa di-improve cepat (quick wins) vs yang butuh transformasi lebih dalam. 90 hari, saya presentasikan initial assessment dan roadmap improvement dengan baseline metric yang sudah ditetapkan. Saya percaya impact paling besar datang dari memahami konteks dengan baik — bukan datang dengan solusi yang sudah jadi sebelum mengenal masalahnya."</div>
+    </div>
+  </div>
+
+  <!-- CAT 5: CLOSING -->
+  <h3 style="font-size:13px; text-transform:uppercase; letter-spacing:.15em; color:var(--muted); margin: 32px 0 16px;">💬 Pertanyaan untuk Interviewer</h3>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      Pertanyaan cerdas untuk Bu Viona (tanyakan ini!)
+      <span class="badge">Sangat Penting</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <strong>Pilih 2–3 dari pertanyaan berikut. Ini menunjukkan kamu serius dan strategic:</strong>
+      <ul style="margin:12px 0; padding-left:20px; line-height:2;">
+        <li>"Apa tantangan terbesar yang dihadapi departemen Business Process & Digitalization saat ini — apakah lebih ke sisi people, process, atau tools?"</li>
+        <li>"Bagaimana success metrics untuk posisi ini diukur dalam 6–12 bulan pertama?"</li>
+        <li>"Apakah ada inisiatif process transformation lintas sub-holding yang sedang berjalan, dan di mana posisi ini akan berkontribusi paling banyak?"</li>
+        <li>"Bagaimana kolaborasi antara BP team dengan IT dan operasional di sini — apakah sudah ada model yang established atau masih dibangun?"</li>
+        <li>"Apa yang membuat seseorang sangat sukses di posisi ini menurut Ibu?"</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- STAR STORIES -->
+<section id="star">
+  <div class="sec-label">05 — Ammunition Bank</div>
+  <div class="sec-title">STAR Stories<br><em>Siap Pakai</em></div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Situasi / Achievement</th>
+        <th>Metrik Kunci</th>
+        <th>Paling Cocok Untuk Pertanyaan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Marketplace Integration Ecosystem</strong><br>Shopee, TikTok, Tokopedia — omnichannel order-to-fulfillment</td>
+        <td>100% on-time delivery</td>
+        <td>Process design, cross-functional collaboration, digitalization</td>
+      </tr>
+      <tr>
+        <td><strong>Postman & SQL Automation</strong><br>Internal automation yang mengurangi manual data entry</td>
+        <td>IDR 1.58 Miliar cost avoidance (106% of target)</td>
+        <td>Process improvement impact, innovation, cost efficiency</td>
+      </tr>
+      <tr>
+        <td><strong>OTP Migration to WhatsApp</strong><br>Migrasi layanan OTP dari SMS ke WhatsApp</td>
+        <td>$44,000/tahun (±IDR 680 Juta) savings</td>
+        <td>Quick win example, cost analysis, change management</td>
+      </tr>
+      <tr>
+        <td><strong>Power BI Dashboard</strong><br>Untuk LND dan Digital division KPI monitoring</td>
+        <td>+30% decision-making speed</td>
+        <td>KPI tracking, reporting, stakeholder communication</td>
+      </tr>
+      <tr>
+        <td><strong>PII Encryption Rollout</strong><br>SOP + data handling workflows, multi-vendor management</td>
+        <td>100% compliance IT Security Governance</td>
+        <td>Compliance, SOP development, project management</td>
+      </tr>
+      <tr>
+        <td><strong>CFU East Establishment</strong><br>Multi-vendor (K3, Bitbox, Mulesoft) system go-live</td>
+        <td>On-time dalam 3-month strict deadline</td>
+        <td>Complex project management, stakeholder management</td>
+      </tr>
+      <tr>
+        <td><strong>Vendor Man-Hour Reduction</strong><br>Internalisasi LIT/SIT integration testing</td>
+        <td>50% pengurangan external vendor man-hours</td>
+        <td>Cost analysis, process redesign, team development</td>
+      </tr>
+      <tr>
+        <td><strong>Tokopedia E-commerce RCA</strong><br>Troubleshoot & fix integration failures</td>
+        <td>Stabilisasi high-volume transaction flows</td>
+        <td>Root cause analysis, problem-solving, cross-team collaboration</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CHECKLIST -->
+<section id="checklist">
+  <div class="sec-label">06 — Final Prep</div>
+  <div class="sec-title">Checklist Hari<br><em>Sebelum Interview</em></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>📚 Riset & Persiapan Materi</h3>
+      <ul class="checklist" id="list1">
+        <li><div class="check" onclick="checkThis(this)"></div>Hafalkan 3 pilar bisnis MMSGI & deskripsinya</li>
+        <li><div class="check" onclick="checkThis(this)"></div>Ingat values MMSGI (Modernity, Meaningfulness, Synergy, Goal, Integrity)</li>
+        <li><div class="check" onclick="checkThis(this)"></div>Latih self-introduction (rekam diri sendiri, max 3 menit)</li>
+        <li><div class="check" onclick="checkThis(this)"></div>Siapkan 3 STAR stories terkuat dengan angka</li>
+        <li><div class="check" onclick="checkThis(this)"></div>Siapkan 3 pertanyaan cerdas untuk Bu Viona</li>
+        <li><div class="check" onclick="checkThis(this)"></div>Review job description dan match ke pengalaman spesifik</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🎒 Logistik & Mental</h3>
+      <ul class="checklist" id="list2">
+        <li><div class="check" onclick="checkThis(this)"></div>Konfirmasi lokasi: TCC Batavia Tower One Lt. 43, Jakarta (Tanah Abang)</li>
+        <li><div class="check" onclick="checkThis(this)"></div>Cek rute & estimasi waktu, berangkat 30 menit lebih awal</li>
+        <li><div class="check" onclick="checkThis(this)"></div>Print 2 copy CV (bawa cadangan)</li>
+        <li><div class="check" onclick="checkThis(this)"></div>Outfit profesional — MMSGI company culture yang corporate</li>
+        <li><div class="check" onclick="checkThis(this)"></div>Tidur cukup malam sebelumnya</li>
+        <li><div class="check" onclick="checkThis(this)"></div>Bawa notebook kecil untuk mencatat insight Bu Viona</li>
+      </ul>
+    </div>
+    <div class="card accent-green">
+      <h3>🧘 Mindset</h3>
+      <ul>
+        <li style="margin-bottom:8px; font-size:14px;">Kamu datang bukan hanya untuk "diterima" — kamu juga sedang mengevaluasi apakah MMSGI cocok untuk kamu</li>
+        <li style="margin-bottom:8px; font-size:14px;">Angka-angka IDR 3.5B dan achievement IKEA adalah bukti nyata — gunakan dengan percaya diri, bukan sombong</li>
+        <li style="margin-bottom:8px; font-size:14px;">Bu Viona adalah sesama praktisi BP — ajak dia bicara peer-to-peer, bukan atasan-bawahan</li>
+        <li style="font-size:14px;">Kalau ada pertanyaan yang tidak tahu jawabannya: "Saya belum pernah encounter skenario itu, tapi approach saya akan..." — lebih baik dari mengarang</li>
+      </ul>
+    </div>
+    <div class="card accent-red">
+      <h3>🚀 Differentiator Utamamu</h3>
+      <ul>
+        <li style="margin-bottom:8px; font-size:14px;"><strong>Rare combo:</strong> BP analyst yang bisa juga build otomasi sendiri (SQL + Postman) — kebanyakan analyst hanya analisis, tidak execute</li>
+        <li style="margin-bottom:8px; font-size:14px;"><strong>Cross-functional experience:</strong> Pernah lead IT project, business analysis, dan solution architecture — kamu bicara dalam bahasa bisnis DAN teknis</li>
+        <li style="margin-bottom:8px; font-size:14px;"><strong>Proven ROI:</strong> IDR 3.5B total savings bukan klaim — ada angka, ada konteks, ada metodologi</li>
+        <li style="font-size:14px;"><strong>Process + Digital:</strong> Pas banget dengan "Business Process AND Digitalization" dept. — kamu cover keduanya</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section style="text-align:center; background: var(--ink); color: var(--paper); padding: 60px;">
+  <div style="font-family:'Playfair Display',serif; font-size:36px; color:var(--gold); margin-bottom:16px;">Good Luck, Ilham! 🔥</div>
+  <p style="color:#aaa; max-width:500px; margin:0 auto;">Kamu sudah punya semua yang dibutuhkan — pengalaman, angka, dan track record nyata. Tinggal sampaikan dengan keyakinan.</p>
+</section>
+
+<script>
+function toggle(el) {
+  const ans = el.nextElementSibling;
+  ans.classList.toggle('open');
+  el.querySelector('.toggle').textContent = ans.classList.contains('open') ? '▴' : '▾';
+}
+function checkThis(el) {
+  el.classList.toggle('done');
+  el.textContent = el.classList.contains('done') ? '✓' : '';
+}
+// Highlight active nav on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a[href^="#"]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if(window.scrollY >= s.offsetTop - 100) current = s.id; });
+  navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#'+current); });
+});
+
+// TOOLTIP SYSTEM
+const popup = document.getElementById('ttPopup');
+const ttTitle = document.getElementById('ttTitle');
+const ttBody = document.getElementById('ttBody');
+let hideTimer;
+
+document.querySelectorAll('.term').forEach(el => {
+  el.addEventListener('mouseenter', function(e) {
+    clearTimeout(hideTimer);
+    ttTitle.textContent = this.dataset.term;
+    ttBody.textContent = this.dataset.def;
+    popup.classList.add('visible');
+    positionTooltip(e);
+  });
+  el.addEventListener('mousemove', positionTooltip);
+  el.addEventListener('mouseleave', () => {
+    hideTimer = setTimeout(() => popup.classList.remove('visible'), 200);
+  });
+  // Touch support
+  el.addEventListener('click', function(e) {
+    e.stopPropagation();
+    ttTitle.textContent = this.dataset.term;
+    ttBody.textContent = this.dataset.def;
+    popup.classList.add('visible');
+    positionTooltip(e);
+  });
+});
+
+document.addEventListener('click', () => popup.classList.remove('visible'));
+
+function positionTooltip(e) {
+  const x = e.clientX, y = e.clientY;
+  const pw = popup.offsetWidth || 320;
+  const ph = popup.offsetHeight || 120;
+  const vw = window.innerWidth, vh = window.innerHeight;
+  let left = x + 14;
+  let top = y - 20;
+  if (left + pw > vw - 16) left = x - pw - 14;
+  if (top + ph > vh - 16) top = vh - ph - 16;
+  if (top < 8) top = 8;
+  popup.style.left = left + 'px';
+  popup.style.top = top + 'px';
+}
+</script>
+</body>
+</html>
