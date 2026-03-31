@@ -796,7 +796,9 @@
   <div class="sec-label">05 — Ammunition Bank</div>
   <div class="sec-title">STAR Stories<br><em>Siap Pakai</em></div>
 
-  <table>
+  <p style="font-size:14px; color:var(--muted); margin-bottom:28px;">Tabel di bawah adalah daftar lengkap amunisi. <strong>Tiga STAR story terkuat</strong> sudah dijabarkan penuh di bawah tabel — klik untuk expand dan pelajari sebelum interview.</p>
+
+  <table style="margin-bottom: 40px;">
     <thead>
       <tr>
         <th>Situasi / Achievement</th>
@@ -805,15 +807,25 @@
       </tr>
     </thead>
     <tbody>
+      <tr style="background: rgba(201,168,76,.06);">
+        <td><strong>⭐ Postman & SQL Automation</strong><br>Internal automation yang mengurangi manual data entry</td>
+        <td><strong>IDR 1.58 Miliar cost avoidance (106% of target)</strong></td>
+        <td>Process improvement impact, innovation, cost efficiency</td>
+      </tr>
+      <tr style="background: rgba(201,168,76,.06);">
+        <td><strong>⭐ Tokopedia E-commerce RCA</strong><br>Troubleshoot & fix integration failures end-to-end</td>
+        <td><strong>Stabilisasi high-volume transaction flows, zero repeat incident</strong></td>
+        <td>Root cause analysis, problem-solving, cross-team collaboration</td>
+      </tr>
+      <tr style="background: rgba(201,168,76,.06);">
+        <td><strong>⭐ Vendor Man-Hour Reduction</strong><br>Internalisasi LIT/SIT integration testing</td>
+        <td><strong>50% pengurangan external vendor man-hours</strong></td>
+        <td>Process redesign, cost analysis, team capability building</td>
+      </tr>
       <tr>
         <td><strong>Marketplace Integration Ecosystem</strong><br>Shopee, TikTok, Tokopedia — omnichannel order-to-fulfillment</td>
         <td>100% on-time delivery</td>
         <td>Process design, cross-functional collaboration, digitalization</td>
-      </tr>
-      <tr>
-        <td><strong>Postman & SQL Automation</strong><br>Internal automation yang mengurangi manual data entry</td>
-        <td>IDR 1.58 Miliar cost avoidance (106% of target)</td>
-        <td>Process improvement impact, innovation, cost efficiency</td>
       </tr>
       <tr>
         <td><strong>OTP Migration to WhatsApp</strong><br>Migrasi layanan OTP dari SMS ke WhatsApp</td>
@@ -835,18 +847,140 @@
         <td>On-time dalam 3-month strict deadline</td>
         <td>Complex project management, stakeholder management</td>
       </tr>
-      <tr>
-        <td><strong>Vendor Man-Hour Reduction</strong><br>Internalisasi LIT/SIT integration testing</td>
-        <td>50% pengurangan external vendor man-hours</td>
-        <td>Cost analysis, process redesign, team development</td>
-      </tr>
-      <tr>
-        <td><strong>Tokopedia E-commerce RCA</strong><br>Troubleshoot & fix integration failures</td>
-        <td>Stabilisasi high-volume transaction flows</td>
-        <td>Root cause analysis, problem-solving, cross-team collaboration</td>
-      </tr>
     </tbody>
   </table>
+
+  <!-- STAR STORY 1 -->
+  <h3 style="font-size:13px; text-transform:uppercase; letter-spacing:.15em; color:var(--muted); margin-bottom:16px;">⭐ 3 STAR Stories Terkuat — Versi Lengkap</h3>
+
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      STAR #1 — Postman & SQL Automation: IDR 1.58 Miliar Cost Avoidance
+      <span class="badge" style="background:#1a3a2a; color:#fff;">Process Improvement</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <p style="font-size:12px; color:var(--muted); margin-bottom:14px;">Gunakan untuk pertanyaan: <em>"Ceritakan pengalaman process improvement terbesar kamu"</em> / <em>"Bagaimana kamu mengukur keberhasilan sebuah perbaikan proses?"</em> / <em>"Bagaimana kamu berinovasi dengan resource yang terbatas?"</em></p>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom:16px;">
+        <div style="background:#f8f8f8; border-radius:3px; padding:16px; border-top:3px solid #c9a84c;">
+          <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:#c9a84c; margin-bottom:6px;">⚡ Metrik Utama</div>
+          <div style="font-size:15px; font-weight:700;">IDR 1.58 Miliar</div>
+          <div style="font-size:12px; color:#666;">Cost avoidance FY2025 — 106% dari target</div>
+        </div>
+        <div style="background:#f8f8f8; border-radius:3px; padding:16px; border-top:3px solid #1a3a2a;">
+          <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:#1a3a2a; margin-bottom:6px;">🎯 Cocok Bila Ditanya</div>
+          <div style="font-size:13px; color:#444;">Process improvement, innovation, cost efficiency, RCA-to-action</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:10px;"><strong style="color:var(--accent);">📌 SITUATION</strong></div>
+      <p style="margin-bottom:14px;">IKEA Indonesia sangat bergantung pada proses manual yang berulang untuk input dan rekonsiliasi data antar sistem — terutama antara sistem ERP internal (<span class="term" data-term="Microsoft Dynamics NAV (MVBC)" data-def="Sistem ERP (Enterprise Resource Planning) yang digunakan IKEA untuk mengelola inventory, keuangan, dan operasional toko. MVBC adalah versi IKEA-customized dari Microsoft Dynamics NAV.">MVBC</span>) dan berbagai platform eksternal. Proses ini memakan man-hour yang signifikan setiap harinya, rawan human error, dan tidak scalable — terutama saat IKEA mulai ekspansi ke marketplace (Shopee, TikTok, Tokopedia).</p>
+
+      <div style="margin-bottom:10px;"><strong style="color:var(--accent);">📌 TASK</strong></div>
+      <p style="margin-bottom:14px;">Saya diminta untuk mengidentifikasi peluang efisiensi dalam operasional digital dan memberikan rekomendasi konkret yang bisa dieksekusi — dengan target cost avoidance yang sudah ditetapkan di awal tahun.</p>
+
+      <div style="margin-bottom:10px;"><strong style="color:var(--accent);">📌 ACTION</strong></div>
+      <p style="margin-bottom:6px;">Saya tidak mulai dari solusi — saya mulai dari <span class="term" data-term="Symptom Mapping" data-def="Mengumpulkan semua gejala/keluhan yang terlihat di permukaan sebelum mulai mencari penyebabnya. Data dulu, analisis kemudian.">symptom mapping</span>. Saya memetakan semua proses manual yang ada, mengukur frekuensi dan man-hour yang dikonsumsi, dan menghitung cost per task. Dari situ saya identifikasi tiga kluster proses yang paling tinggi volume dan paling repetitif.</p>
+      <p style="margin-bottom:6px;">Setelah penyebab inefisiensi dipahami, saya mulai build solusi otomasi menggunakan <span class="term" data-term="Postman Scripting" data-def="Postman biasanya dipakai untuk testing API, tapi Ilham menggunakannya untuk membuat script otomatis yang bisa menjalankan serangkaian request API secara terjadwal — menggantikan proses manual yang sebelumnya dikerjakan manusia.">Postman scripting</span> dan <span class="term" data-term="SQL Automation" data-def="Menulis query/script SQL yang berjalan otomatis pada jadwal tertentu untuk mengambil, memproses, atau memindahkan data — tanpa perlu intervensi manusia setiap kali.">SQL automation</span> — tools yang sudah tersedia, tanpa perlu biaya tambahan. Saya juga koordinasi dengan tim IT untuk pastikan otorisasi dan keamanan data terjaga, dan dengan tim operasional untuk validasi bahwa output otomasi akurat sebelum rollout.</p>
+      <p style="margin-bottom:14px;">Rollout dilakukan bertahap per kluster proses, dengan parallel run selama 2 minggu sebelum cutover penuh — untuk memastikan tidak ada data loss atau gap dalam operasional.</p>
+
+      <div style="margin-bottom:10px;"><strong style="color:var(--accent);">📌 RESULT</strong></div>
+      <p style="margin-bottom:14px;"><strong>IDR 1.58 Miliar cost avoidance — 106% dari target FY2025.</strong> Angka ini adalah gabungan dari penghematan man-hour langsung dan eliminasi potensi error yang sebelumnya butuh proses koreksi manual. Tim operasional yang sebelumnya menghabiskan waktu untuk entry data manual sekarang bisa fokus ke pekerjaan yang lebih bernilai. Dan karena otomasi ini dibangun secara internal, tidak ada biaya langganan atau ketergantungan vendor baru.</p>
+
+      <div class="sample">
+        <strong>Versi ringkas untuk diucapkan (±45 detik):</strong><br><br>
+        "Di IKEA, saya melihat banyak proses operasional yang masih dilakukan manual dan berulang setiap hari — terutama rekonsiliasi data antar sistem. Saya mulai dengan memetakan semua proses itu, mengukur berapa jam yang dikonsumsi, dan menghitung cost-nya. Setelah tahu akar masalahnya, saya build otomasi menggunakan Postman dan SQL — tools yang sudah tersedia, tanpa tambahan biaya. Hasilnya: <strong>IDR 1.58 Miliar cost avoidance, 106% dari target yang ditetapkan</strong>. Yang saya paling bangga bukan hanya angkanya — tapi prosesnya: saya mulai dari data, bukan asumsi."
+      </div>
+    </div>
+  </div>
+
+  <!-- STAR STORY 2 -->
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      STAR #2 — Tokopedia E-Commerce RCA: Menyelamatkan Transaksi High-Volume dari Kegagalan Berulang
+      <span class="badge" style="background:#b84040; color:#fff;">Root Cause Analysis</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <p style="font-size:12px; color:var(--muted); margin-bottom:14px;">Gunakan untuk pertanyaan: <em>"Ceritakan pengalaman melakukan root cause analysis"</em> / <em>"Ceritakan saat kamu menghadapi masalah yang kompleks dan bagaimana kamu menyelesaikannya"</em> / <em>"Bagaimana kamu bekerja lintas tim?"</em></p>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom:16px;">
+        <div style="background:#f8f8f8; border-radius:3px; padding:16px; border-top:3px solid #c9a84c;">
+          <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:#c9a84c; margin-bottom:6px;">⚡ Metrik Utama</div>
+          <div style="font-size:15px; font-weight:700;">Zero repeat incident</div>
+          <div style="font-size:12px; color:#666;">Transaksi high-volume distabilkan + protokol pencegahan dibangun</div>
+        </div>
+        <div style="background:#f8f8f8; border-radius:3px; padding:16px; border-top:3px solid #b84040;">
+          <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:#b84040; margin-bottom:6px;">🎯 Cocok Bila Ditanya</div>
+          <div style="font-size:13px; color:#444;">RCA methodology, cross-functional problem solving, process governance</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:10px;"><strong style="color:var(--accent);">📌 SITUATION</strong></div>
+      <p style="margin-bottom:14px;">Integrasi e-commerce IKEA dengan Tokopedia mengalami kegagalan transaksi yang tidak konsisten — order masuk dari Tokopedia tapi tidak terbaca di sistem fulfillment IKEA. Karena volume transaksi sangat tinggi, setiap menit downtime atau error berdampak langsung ke pengalaman customer dan reputasi IKEA di platform. Tim awalnya sudah mencoba beberapa perbaikan teknis, tapi masalah terus berulang karena tidak ada yang mencari akar penyebabnya secara sistematis.</p>
+
+      <div style="margin-bottom:10px;"><strong style="color:var(--accent);">📌 TASK</strong></div>
+      <p style="margin-bottom:14px;">Saya diminta masuk dan melakukan investigasi menyeluruh — bukan sekadar memperbaiki yang rusak, tapi memastikan masalah tidak berulang lagi dan ada mekanisme pencegahan untuk ke depannya.</p>
+
+      <div style="margin-bottom:10px;"><strong style="color:var(--accent);">📌 ACTION</strong></div>
+      <p style="margin-bottom:6px;">Langkah pertama saya adalah <span class="term" data-term="Symptom Mapping" data-def="Mengumpulkan semua gejala yang terlihat sebelum mulai analisis penyebab. Data transaksi, log sistem, pola waktu kejadian — semua dikumpulkan dulu.">symptom mapping</span>: saya kumpulkan log transaksi yang gagal, pola waktu kejadiannya, dan tipe order yang paling sering error. Dari sini saya tidak langsung blame sistem — saya cross-check ke tiga sumber berbeda: log API dari sisi Tokopedia, log sistem IKEA, dan wawancara langsung dengan tim fulfillment di lapangan.</p>
+      <p style="margin-bottom:6px;">Temuan: root cause-nya adalah <span class="term" data-term="Field Mapping Mismatch" data-def="Ketidakcocokan nama/format data antara dua sistem yang berkomunikasi. Tokopedia memperbarui struktur API mereka tanpa notifikasi resmi, sehingga data yang dikirim tidak lagi terbaca oleh sistem IKEA.">field mapping mismatch</span> — Tokopedia melakukan update pada struktur <span class="term" data-term="API (Application Programming Interface)" data-def="Cara dua sistem berkomunikasi dan bertukar data. Seperti 'bahasa' yang disepakati antara dua sistem. Kalau salah satu pihak mengubah 'bahasa' tanpa memberitahu pihak lain, komunikasi bisa gagal.">API</span>-nya tanpa notifikasi resmi ke partner. Perubahan kecil pada nama field data membuat sistem IKEA tidak bisa membaca order yang masuk.</p>
+      <p style="margin-bottom:14px;">Setelah fix teknis diselesaikan bersama tim IT, saya ambil langkah yang lebih penting: saya rancang <span class="term" data-term="Change Notification Protocol" data-def="Prosedur formal yang mewajibkan semua pihak (vendor, partner, internal) untuk memberitahu pihak terdampak sebelum melakukan perubahan pada sistem. Mencegah 'silent changes' yang bisa merusak integrasi.">change notification protocol</span> dan sistem monitoring otomatis yang akan alert tim apabila ada anomali di transaksi — sehingga masalah serupa bisa terdeteksi dalam hitungan menit, bukan jam.</p>
+
+      <div style="margin-bottom:10px;"><strong style="color:var(--accent);">📌 RESULT</strong></div>
+      <p style="margin-bottom:14px;"><strong>Zero repeat incident setelah implementasi.</strong> Transaksi high-volume kembali stabil, customer experience terjaga, dan yang lebih penting — tim sekarang punya protokol yang jelas kalau ada perubahan dari pihak marketplace di masa depan. Ini bukan sekadar fix bug, ini membangun sistem pencegahan yang berkelanjutan.</p>
+
+      <div class="sample">
+        <strong>Versi ringkas untuk diucapkan (±45 detik):</strong><br><br>
+        "Saya pernah menghadapi situasi di mana integrasi IKEA dengan Tokopedia gagal secara tidak konsisten — order masuk tapi tidak terbaca di sistem kami. Tim sudah coba beberapa perbaikan teknis tapi masalah terus berulang. Saya masuk dan mulai dari data: kumpulkan log transaksi, pola waktunya, lalu cross-check ke tiga sumber berbeda. Ketemu: Tokopedia update struktur API mereka tanpa notifikasi, dan field mapping kita jadi tidak match. Setelah fix teknis selesai, saya yang inisiatif bikin change notification protocol dan monitoring otomatis. Hasilnya: <strong>zero repeat incident</strong> — dan tim sekarang punya sistem pencegahan, bukan hanya solusi reaktif."
+      </div>
+    </div>
+  </div>
+
+  <!-- STAR STORY 3 -->
+  <div class="qa-item">
+    <div class="qa-q" onclick="toggle(this)">
+      STAR #3 — Vendor Man-Hour Reduction: 50% Efisiensi Lewat Internalisasi Proses Testing
+      <span class="badge" style="background:#0f0f0f; color:#c9a84c;">Process Redesign</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="qa-a">
+      <p style="font-size:12px; color:var(--muted); margin-bottom:14px;">Gunakan untuk pertanyaan: <em>"Ceritakan pengalaman redesign proses yang memberikan dampak nyata"</em> / <em>"Bagaimana kamu mengelola perubahan yang melibatkan tim?"</em> / <em>"Bagaimana kamu membangun kapabilitas tim?"</em></p>
+
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-bottom:16px;">
+        <div style="background:#f8f8f8; border-radius:3px; padding:16px; border-top:3px solid #c9a84c;">
+          <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:#c9a84c; margin-bottom:6px;">⚡ Metrik Utama</div>
+          <div style="font-size:15px; font-weight:700;">50% pengurangan</div>
+          <div style="font-size:12px; color:#666;">External vendor man-hours untuk store opening (Bali & Surabaya)</div>
+        </div>
+        <div style="background:#f8f8f8; border-radius:3px; padding:16px; border-top:3px solid #0f0f0f;">
+          <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:#555; margin-bottom:6px;">🎯 Cocok Bila Ditanya</div>
+          <div style="font-size:13px; color:#444;">Process redesign, change management, team development, cost efficiency</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:10px;"><strong style="color:var(--accent);">📌 SITUATION</strong></div>
+      <p style="margin-bottom:14px;">Setiap kali IKEA membuka toko baru, proses <span class="term" data-term="LIT/SIT Testing" data-def="LIT = Load Integration Testing, SIT = System Integration Testing. Pengujian menyeluruh sebelum sistem baru di-launch — memastikan semua komponen (ERP, POS, warehouse) bekerja bersama dengan benar. Biasanya dikerjakan vendor eksternal yang mahal.">LIT/SIT testing</span> selalu dikerjakan oleh vendor eksternal (K3). Ini mahal, lambat karena ketergantungan jadwal vendor, dan membuat tim internal tidak pernah benar-benar memahami prosesnya sendiri. Setiap store opening baru artinya biaya vendor besar lagi — siklus yang terus berulang tanpa ada transfer pengetahuan.</p>
+
+      <div style="margin-bottom:10px;"><strong style="color:var(--accent);">📌 TASK</strong></div>
+      <p style="margin-bottom:14px;">Saya melihat ini sebagai peluang — bukan hanya untuk hemat biaya, tapi untuk membangun kapabilitas internal yang seharusnya dimiliki tim sendiri. Saya mengusulkan untuk menginternalisasi proses testing ini, dan mendapat mandat untuk memimpinnya saat pembukaan store IKEA Bali dan Surabaya.</p>
+
+      <div style="margin-bottom:10px;"><strong style="color:var(--accent);">📌 ACTION</strong></div>
+      <p style="margin-bottom:6px;">Langkah pertama: saya pelajari dan dokumentasikan secara menyeluruh semua proses testing yang selama ini dikerjakan vendor — dari test case design, execution steps, hingga acceptance criteria. Ini yang tidak pernah ada dokumentasinya secara internal.</p>
+      <p style="margin-bottom:6px;">Dari dokumentasi itu, saya buat <span class="term" data-term="Training Plan" data-def="Rencana terstruktur untuk mentransfer pengetahuan ke tim internal — mencakup apa yang perlu dipelajari, dalam urutan apa, dan bagaimana mengukur kesiapan tim sebelum cutover.">training plan</span> untuk tim internal dan jalankan sesi hands-on langsung di lingkungan staging. Saya juga desain <span class="term" data-term="SOP (Standard Operating Procedure)" data-def="Dokumen langkah-langkah standar yang harus diikuti saat mengerjakan suatu proses. Tujuannya agar siapapun yang mengerjakan mendapat hasil yang konsisten — tidak bergantung pada satu orang tertentu.">SOP</span> testing yang bisa digunakan tim untuk store opening berikutnya tanpa harus mulai dari nol lagi.</p>
+      <p style="margin-bottom:14px;">Untuk meminimalkan risiko, saya rancang periode <span class="term" data-term="Parallel Run" data-def="Masa transisi di mana proses lama dan proses baru dijalankan bersamaan — untuk memastikan hasilnya konsisten sebelum proses lama dihentikan sepenuhnya. Cara paling aman untuk melakukan cutover.">parallel run</span> singkat: vendor tetap standby tapi tim internal yang pegang kendali. Ini meyakinkan stakeholder bahwa kami siap, sekaligus membangun kepercayaan diri tim.</p>
+
+      <div style="margin-bottom:10px;"><strong style="color:var(--accent);">📌 RESULT</strong></div>
+      <p style="margin-bottom:14px;"><strong>50% pengurangan external vendor man-hours untuk pembukaan store IKEA Bali dan Surabaya.</strong> Tapi angka itu bukan yang paling penting — dampak jangka panjangnya adalah tim internal sekarang punya kapabilitas dan SOP yang bisa digunakan untuk semua store opening berikutnya. Ketergantungan pada vendor untuk proses ini praktis hilang. Satu investasi waktu, efisiensinya berlipat ganda di setiap pembukaan store ke depan.</p>
+
+      <div class="sample">
+        <strong>Versi ringkas untuk diucapkan (±45 detik):</strong><br><br>
+        "Di IKEA, setiap store baru buka, kami selalu pakai vendor eksternal untuk integration testing — mahal, lambat, dan tim internal tidak pernah benar-benar paham prosesnya. Saya lihat ini sebagai kesempatan. Saya pelajari semua proses testing yang selama ini dikerjakan vendor, dokumentasikan, buat SOP, dan training tim internal untuk ambil alih sepenuhnya — dimulai dari pembukaan store Bali dan Surabaya. Hasilnya: <strong>50% pengurangan vendor man-hours</strong>. Tapi yang lebih penting, tim sekarang mandiri — untuk store berikutnya tidak perlu mulai dari nol lagi. Satu proses yang diinternalisasi, efisiensinya terus berlipat."
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- CHECKLIST -->
